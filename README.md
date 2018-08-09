@@ -2,7 +2,7 @@
 There are some minor steps needed to install Asterboard and there are
 some assumptions as to how your data is logged.
 
-** ASSUMPTIONS
+## ASSUMPTIONS
 
 * Your data is sent from one or more Asterisk servers running v 1.8 or higher.
 * Your data is tagged from Asterisk as being the "asterisk" program (this is
@@ -12,29 +12,26 @@ some assumptions as to how your data is logged.
 	calls out goes through from-internal).
 
 
-** INSTALLING
+## INSTALLING
 
 Note: Older (pre 1.4.0) versions of NLS used a different directory for logstash
 patterns.  If the directory in step 1a does not exist, use step 1b.  You do not
 need to perform both steps.
 
 1. Copy "asterisk" to logstash's patterns directory:
-cp asterisk /usr/local/nagioslogserver/logstash/vendor/bundle/jruby/1.9/gems/logstash-patterns-core-0.1.10/patterns
-* or
-1. Copy "asterisk" to older logstash patterns directory:
-cp asterisk /usr/local/nagioslogserver/logstash/patterns
-
+   - cp asterisk /usr/local/nagioslogserver/logstash/vendor/bundle/jruby/1.9/gems/logstash-patterns-core-0.1.10/patterns
+   - cp asterisk /usr/local/nagioslogserver/logstash/patterns
 2. Log in to Nagios Log Server and go to "Administration"
 	Go to "Global Configuration"
 	Add a filter called "Asterisk" with the following content:
-
+```
 	if [program] == 'asterisk' {
   	  grok {
     	    match => ['message', '%{ASTLOG}']
   	  }
 	}
-
-	Save and Apply your new global configuration
+```
+3. 	Save and Apply your new global configuration
 
 3. Install the dashboard itself by going to the "Dashboard" screen
 	Click the "Load" icon near the top right
