@@ -18,9 +18,9 @@ Note: Older (pre 1.4.0) versions of NLS used a different directory for logstash
 patterns.  If the directory in step 1a does not exist, use step 1b.  You do not
 need to perform both steps.
 
-1. Copy "asterisk" to logstash's patterns directory:
-   - cp asterisk /usr/local/nagioslogserver/logstash/vendor/bundle/jruby/1.9/gems/logstash-patterns-core-0.1.10/patterns
+1. Copy "asterisk" to logstash's patterns directory (most likely, it's the first option below, but use only one):
    - cp asterisk /usr/local/nagioslogserver/logstash/patterns
+   - cp asterisk /usr/local/nagioslogserver/logstash/vendor/bundle/jruby/1.9/gems/logstash-patterns-core-0.1.10/patterns
 2. Log in to Nagios Log Server and go to "Administration"
 	Go to "Global Configuration"
 	Add a filter called "Asterisk" with the following content:
